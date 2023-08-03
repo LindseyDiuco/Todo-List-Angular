@@ -1,0 +1,32 @@
+<div class="p-3 container text-center">
+    <h1 class="display-4">Todo List</h1>
+    <h6>This app is a simple Angular-based todo list application. 
+        It provides a simple and user-friendly interface for managing a list of tasks to be done. 
+        It allows users to keep track of their todos, mark them as done, and remove completed tasks from the list.</h6>
+  
+    <div class="row justify-content-md-center m-4">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter to do here" aria-label="Enter to do" aria-describedby="button-addon2" [(ngModel)]="newTodo" (keyup.enter)="saveTodo()">
+        <button class="btn btn-primary" type="button" id="button-addon2" (click)="saveTodo()">Add to list</button>
+      </div>
+      <div class="table-responsive m-4">
+        <table class="table table-hover">
+          <tbody>
+            <tr *ngFor="let todo of todos; let i = index">
+              <td class="narrow">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" class="{{(!todo.isDone) ? 'done' : ''}}" (click)="done(i)">
+                </div>
+              </td>
+              <td class="narrow">{{i + 1}}</td>
+              <td>{{todo.name}}</td>
+              <td class="narrow">
+                <i [style.color]="'red'" class="bi bi-x-circle-fill cursor-pointer" (click)="remove(i)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
